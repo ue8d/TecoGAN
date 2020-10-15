@@ -1,6 +1,6 @@
 '''
 several running examples, run with
-python3 runGan.py 1 # the last number is the run case number
+python runGan.py 1 # the last number is the run case number
 
 runcase == 1    inference a trained model
 runcase == 2    calculate the metrics, and save the numbers in csv
@@ -67,13 +67,13 @@ if( runcase == 0 ): # download inference data, trained models
 elif( runcase == 1 ): # inference a trained model
     
     dirstr = './results/' # the place to save the results
-    testpre = ['calendar'] # the test cases
+    testpre = ['test'] # the test cases
 
     if (not os.path.exists(dirstr)): os.mkdir(dirstr)
     
     # run these test cases one by one:
     for nn in range(len(testpre)):
-        cmd1 = ["python3", "main.py",
+        cmd1 = ["python", "main.py",
             "--cudaID", "0",            # set the cudaID here to use only one GPU
             "--output_dir",  dirstr,    # Set the place to put the results.
             "--summary_dir", os.path.join(dirstr, 'log/'), # Set the place to put the log. 
@@ -97,7 +97,7 @@ elif( runcase == 2 ): # calculate all metrics, and save the csv files, should us
 
     tar_list = [(tarstr+_) for _ in testpre]
     out_list = [(dirstr+_) for _ in testpre]
-    cmd1 = ["python3", "metrics.py",
+    cmd1 = ["python", "metrics.py",
         "--output", dirstr+"metric_log/",
         "--results", ",".join(out_list),
         "--targets", ",".join(tar_list),
@@ -139,7 +139,7 @@ elif( runcase == 3 ): # Train TecoGAN
     now_str = datetime.datetime.now().strftime("%m-%d-%H")
     train_dir = folder_check("ex_TecoGAN%s/"%now_str)
     # train TecoGAN, loss = l2 + VGG54 loss + A spatio-temporal Discriminator
-    cmd1 = ["python3", "main.py",
+    cmd1 = ["python", "main.py",
         "--cudaID", "0", # set the cudaID here to use only one GPU
         "--output_dir", train_dir, # Set the place to save the models.
         "--summary_dir", os.path.join(train_dir,"log/"), # Set the place to save the log. 
@@ -247,7 +247,7 @@ elif( runcase == 3 ): # Train TecoGAN
 elif( runcase == 4 ): # Train FRVSR, loss = l2 warp + l2 content
     now_str = datetime.datetime.now().strftime("%m-%d-%H")
     train_dir = folder_check("ex_FRVSR%s/"%now_str)
-    cmd1 = ["python3", "main.py",
+    cmd1 = ["python", "main.py",
         "--cudaID", "0", # set the cudaID here to use only one GPU
         "--output_dir", train_dir, # Set the place to save the models.
         "--summary_dir", os.path.join(train_dir,"log/"), # Set the place to save the log. 
