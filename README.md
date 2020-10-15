@@ -1,7 +1,16 @@
 # TecoGAN
 
+## はじめに
+このプロジェクトは自分用（Windows10）にTecoGANを使いやすくするためにソースコードを一部書き換えたものになります。
+
 ## 環境構築
-Anacondaのインストール後、「Anaconda Prompt」を起動
+まず、以下の「model.zip」をダウンロード
+
+https://ge.in.tum.de/download/data/TecoGAN/model.zip
+
+ダウンロード後、"TecoGAN/model"を作り、その中に解凍したものを入れる
+
+次に、Anacondaのインストール後、「Anaconda Prompt」を起動
 
 以下のコマンドでTecoGANで使用する環境を用意（tcgnの部分は仮想環境の名前なので自由に変更可）
 
@@ -66,7 +75,10 @@ elif( runcase == 1 ): # inference a trained model
   testpre = ['calendar'] # the test cases  ★ココを別のディレクトリにする
 ```
 
-## 参考リンク
+## モデルの学習
+今後書き加えていきます。
+
+## 参考・引用リンク
 https://www.eximradar.jp/?p=1944
 
 https://wells12.com/tecogan-super-resolution/
